@@ -1,137 +1,160 @@
-<!doctype html><html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Page</title>
+<!doctype html>
+<html lang="id"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>Galeri Kenangan 12 Bulan</title> 
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      min-height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #111;
+      color: #fff;
+    }
+    .welcome-message {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
       display: flex;
       justify-content: center;
       align-items: center;
-      background-image: url('custom-background.jpg');
-    }.login-container {
-  background-color: rgba(255, 255, 255, 0.85);
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-  width: 100%;
-  max-width: 400px;
-}
-
-.login-container h2 {
-  text-align: center;
-  margin-bottom: 25px;
-  color: #333;
-}
-
-.login-container input[type="text"],
-.login-container input[type="password"] {
-  width: 100%;
-  padding: 14px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-sizing: border-box;
-  font-size: 16px;
-}
-
-.password-container {
-  position: relative;
-}
-
-.toggle-password {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: #007bff;
-  font-size: 14px;
-}
-
-.login-container button {
-  width: 100%;
-  padding: 14px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 18px;
-  transition: background-color 0.3s ease;
-}
-
-.login-container button:hover {
-  background-color: #218838;
-}
-
-.login-container .footer {
-  margin-top: 15px;
-  text-align: center;
-  font-size: 14px;
-  color: #666;
-}
-
-.login-container .footer a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.login-container .footer a:hover {
-  text-decoration: underline;
-}
-
-  </style>
-</head>
-<body>
-  <div class="login-container">
-    <h2>Login</h2>
-    <form id="loginForm">
-      <input type="text" placeholder="Username" name="username" id="username" required>
-      <div class="password-container">
-        <input type="password" placeholder="Password" name="password" id="password" required>
-        <span class="toggle-password" onclick="togglePassword()">Lihat</span>
-      </div>
-      <button type="submit">Login</button>
-    </form>
-    </div>
-    <script>
-    function togglePassword() {
-      const passwordInput = document.getElementById('password');
-      const toggleText = document.querySelector('.toggle-password');
-      if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-        toggleText.textContent = 'Sembunyikan';
-      } else {
-        passwordInput.type = 'password';
-        toggleText.textContent = 'Lihat';
+      flex-direction: column;
+      z-index: 999;
+      animation: fadeOut 3s ease-in-out 5s forwards;
+    }
+    .welcome-message h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .welcome-message p {
+      font-size: 1.2rem;
+      max-width: 90%;
+      text-align: center;
+    }
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
       }
     }
+    header {
+      padding: 20px;
+      text-align: center;
+      background-color: #222;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      padding: 20px;
+    }
+    .month-card {
+      background-color: #1c1c1c;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease;
+    }
+    .month-card:hover {
+      transform: scale(1.03);
+    }
+    .month-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .month-card .caption {
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+  </style> 
+ </head> 
+ <body> 
+  <!-- Musik -->
+  <audio autoplay loop>
+    <source src="music/hbd.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung audio.
+  </audio>
 
-    // Validasi login
-    const form = document.getElementById('loginForm');
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
+  <div class="welcome-message"> 
+   <h2>Selamat Anniversary Ke-1 Tahun Sayang 💖</h2> 
+   <p>Terima kasih telah menjadi bagian dari setiap langkahku. Mari kita kenang perjalanan cinta ini selama 12 bulan yang penuh makna dan cerita manis 🥰</p> 
+  </div> 
 
-      // Ganti nilai ini dengan username dan password yang kamu inginkan
-      const validUsername = 'DhafaNikita';
-      const validPassword = '12-08';
-
-      if (username === validUsername && password === validPassword) {
-        alert('Login berhasil!');
-        // Redirect ke halaman lain kalau perlu
-      } else {
-        alert('Username atau password salah.');
-      }
-    });
-  </script>
-</body></html>
+  <header> 
+   <h1>Galeri Kenangan Selama 12 Bulan</h1> 
+   <p>Setiap bulan punya cerita sendiri 💫</p> 
+  </header> 
+  
+  <section class="gallery"> 
+   <!-- Januari --> 
+   <div class="month-card"> 
+    <img src="img/januari.jpg" alt="Kenangan Januari"> 
+    <div class="caption">Januari</div> 
+   </div> 
+   <!-- Februari --> 
+   <div class="month-card"> 
+    <img src="img/februari.jpg" alt="Kenangan Februari"> 
+    <div class="caption">Februari</div> 
+   </div> 
+   <!-- Maret --> 
+   <div class="month-card"> 
+    <img src="img/maret.jpg" alt="Kenangan Maret"> 
+    <div class="caption">Maret</div> 
+   </div> 
+   <!-- April --> 
+   <div class="month-card"> 
+    <img src="img/april.jpg" alt="Kenangan April"> 
+    <div class="caption">April</div> 
+   </div> 
+   <!-- Mei --> 
+   <div class="month-card"> 
+    <img src="img/mei.jpg" alt="Kenangan Mei"> 
+    <div class="caption">Mei</div> 
+   </div> 
+   <!-- Juni --> 
+   <div class="month-card"> 
+    <img src="img/juni.jpg" alt="Kenangan Juni"> 
+    <div class="caption">Juni</div> 
+   </div> 
+   <!-- Juli --> 
+   <div class="month-card"> 
+    <img src="img/juli.jpg" alt="Kenangan Juli"> 
+    <div class="caption">Juli</div> 
+   </div> 
+   <!-- Agustus --> 
+   <div class="month-card"> 
+    <img src="img/agustus.jpg" alt="Kenangan Agustus"> 
+    <div class="caption">Agustus</div> 
+   </div> 
+   <!-- September --> 
+   <div class="month-card"> 
+    <img src="img/september.jpg" alt="Kenangan September"> 
+    <div class="caption">September</div> 
+   </div> 
+   <!-- Oktober --> 
+   <div class="month-card"> 
+    <img src="img/oktober.jpg" alt="Kenangan Oktober"> 
+    <div class="caption">Oktober</div> 
+   </div> 
+   <!-- November --> 
+   <div class="month-card"> 
+    <img src="img/november.jpg" alt="Kenangan November"> 
+    <div class="caption">November</div> 
+   </div> 
+   <!-- Desember --> 
+   <div class="month-card"> 
+    <img src="img/desember.jpg" alt="Kenangan Desember"> 
+    <div class="caption">Desember</div> 
+   </div> 
+  </section> 
+ </body>
+</html>
